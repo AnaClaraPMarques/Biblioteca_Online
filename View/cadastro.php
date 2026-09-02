@@ -6,13 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Biblioteca C's - Página de Cadastro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-        crossorigin="anonymous">
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="../assets/templates/css/global.css">
-    <link rel="stylesheet" href="../assets/templates/css/login.css">
     <link rel="stylesheet" href="../assets/templates/css/cadastro.css">
 </head>
 
@@ -50,6 +45,8 @@
     <span class="icone">⚠️</span>
     <span class="texto">Usuário não encontrado.</span>
 </div>
+
+
 
         <div class="nome_completo">
                     <label for="inputname" class="form-label">

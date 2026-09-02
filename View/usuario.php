@@ -6,7 +6,6 @@
 
     <title>Biblioteca C's</title>
 
-    <link rel="stylesheet" href="../assets/templates/css/global.css">
     <link rel="stylesheet" href="../assets/templates/css/usuario.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>

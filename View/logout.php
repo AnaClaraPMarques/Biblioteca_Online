@@ -7,7 +7,6 @@
 
     <title>Biblioteca C's - Logout</title>
 
-    <link rel="stylesheet" href="../assets/templates/css/global.css">
     <link rel="stylesheet" href="../assets/templates/css/logout.css">
 
 
@@ -24,12 +23,15 @@
 
     <div class="fundo"></div>
 
-    <div class="container">
+    <div class="container"> 
+ 
+                
         <div class="conteudo">
-
+   
             <div class="logout-box">
 
-                <div class="icone-logout">
+                   
+    <div class="icone-logout">
                     <i class="bi bi-box-arrow-right"></i>
                 </div>
 
@@ -41,12 +43,12 @@
 
                 <div class="botoes">
 
-                    <a href="login.html" class="btn-login">
+                    <a href="login.php" class="btn-login">
                         <i class="bi bi-box-arrow-in-right"></i>
                         Fazer login novamente
                     </a>
 
-                    <a href="../index.html" class="btn-inicio">
+                    <a href="index.php" class="btn-inicio">
                         <i class="bi bi-house"></i>
                         Voltar ao início
                     </a>

@@ -1,0 +1,8 @@
+{
+    "name": "aluno.senai/biblioteca_online",
+    "description": "Sistema de gerenciamento de biblioteca",
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {}
+}

@@ -45,7 +45,7 @@
           <button type="submit">Fazer login</button>
 
           <p class="footer-text">
-            Não tem uma conta? <a href="../Reposit-rio-Estudantil/">Cadastre-se</a>
+            Não tem uma conta? <a href="../View/cadastro.php">Cadastre-se</a>
           </p>
         </form>
       </div>

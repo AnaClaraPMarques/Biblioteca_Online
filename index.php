@@ -18,16 +18,14 @@
             <h1> Biblioteca C's</h1>
 
             <div class="menu">
-                <a href="#">Início</a>
-                <a href="#">Livros</a>
-                <a href="#">Meus empréstimos</a>
-                <a href="#" class="login">Entrar</a>
+                <a href="#inicio">Início</a>
+                <a href="#livros">Livros</a>
+                <a href="#emprestimos">Meus empréstimos</a>
+                <a href="View/login.php" class="login">Entrar</a>
             </div>
         </nav>
     </header>
 
-
-  
     <main>
 
         <section class="inicio">
@@ -53,7 +51,6 @@
         </section>
 
 
-        <!-- LIVROS -->
         <section class="livros">
 
             <h2>Livros disponíveis</h2>
@@ -63,7 +60,8 @@
                 <div class="card">
 
                     <div class="capa">
-                        📖
+                        <img src="img/OpequenoPrincipe.jpg" alt="Capa do livro O pequeno Principe">
+
                     </div>
 
                     <div class="informacoes">
@@ -73,7 +71,7 @@
 
                         <span>Fantasia</span>
 
-                        <button>Ver detalhes</button>
+                        <button>Realizar Empréstimo</button>
                     </div>
 
                 </div>
@@ -82,7 +80,8 @@
                 <div class="card">
 
                     <div class="capa">
-                        📕
+                        <img src="img/DomCasmurro.jpg" alt="Capa do livro Dom Casmurro">
+
                     </div>
 
                     <div class="informacoes">
@@ -92,7 +91,7 @@
 
                         <span>Romance</span>
 
-                        <button>Ver detalhes</button>
+                        <button>Realizar Empréstimo</button>
                     </div>
 
                 </div>
@@ -101,7 +100,8 @@
                 <div class="card">
 
                     <div class="capa">
-                        📗
+                        <img src="img/HarryPotter.jpg" alt="Capa do livro Harry Potter">
+
                     </div>
 
                     <div class="informacoes">
@@ -111,9 +111,69 @@
 
                         <span>Fantasia</span>
 
-                        <button>Ver detalhes</button>
+                        <button>Realizar Empréstimo</button>
+                    </div>
+                  </div>
+               
+
+
+                <div class="card">
+
+                    <div class="capa">
+                        <img src="img/1984.png" alt="Capa do livro 1984">
+
                     </div>
 
+                    <div class="informacoes">
+                        <h3>1984</h3>
+
+                        <p>George Orwell</p>
+
+                        <span>Romance Distópico</span>
+
+                        <button>Realizar Empréstimo</button>
+                    </div>
+                </div>
+
+                    
+                <div class="card">
+
+                    <div class="capa">
+                        <img src="img/CapitaesdeAreia.png" alt="Capa do livro Capitães de Areia">
+
+                    </div>
+
+                    <div class="informacoes">
+                        <h3>Capitães de Areia</h3>
+
+                        <p>Jorge Amado</p>
+
+                        <span>Romance Modernista</span>
+
+                        <button>Realizar Empréstimo</button>
+                    </div>
+                </div>
+
+                </div>
+
+        </section>
+
+       <section class = "emprestimos" id="emprestimos">
+
+            <h2>Meus empréstimos</h2>
+
+            <div class="lista-emprestimos">
+
+                <div class="emprestimo">
+                    <h3>O Pequeno Príncipe</h3> <br>
+                    <p>Data de empréstimo: 01/06/2026</p>
+                    <p>Data de devolução: 15/06/2026</p>
+                </div>
+
+                <div class="emprestimo">
+                    <h3>Dom Casmurro</h3> <br>
+                    <p>Data de empréstimo: 05/06/2026</p>
+                    <p>Data de devolução: 20/06/2026</p>
                 </div>
 
             </div>
@@ -121,8 +181,6 @@
         </section>
 
     </main>
-
-
 
     <footer>
 

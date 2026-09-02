@@ -51,21 +51,50 @@
     <span class="texto">Usuário não encontrado.</span>
 </div>
 
-        <form>
-          <div class="campo">
-            <label for="user">Email Acadêmico/CPF</label>
-            <input type="text" id="user">
-          </div>
+        <div class="nome_completo">
+                    <label for="inputname" class="form-label">
+                        Nome Completo
+                    </label>
 
-          <div class="campo">
-            <label for="pass">Senha</label>
-            <input type="password" id="pass">
-          </div>
+                    <input type="text"
+                        class="form-control"
+                        id="inputname">
+                </div>
+
+                <div class="email_academico">
+                    <label for="inputemail" class="form-label">
+                        E-mail acadêmico
+                    </label>
+
+                    <input type="email"
+                        class="form-control"
+                        id="inputemail">
+                </div>
+
+                <div class="criacao_senha">
+                    <label for="inputpassword" class="form-label">
+                        Criar senha
+                    </label>
+
+                    <input type="password"
+                        class="form-control"
+                        id="inputpassword">
+                </div>
+
+                <div class="confirmacao_senha">
+                    <label for="inputconfirmpassword" class="form-label">
+                        Confirmar senha
+                    </label>
+
+                    <input type="password"
+                        class="form-control"
+                        id="inputconfirmpassword">
+                </div>
 
           <button type="submit">Fazer cadastro</button>
 
           <p class="footer-text">
-            Já tem uma conta? <a href="../Reposit-rio-Estudantil/">Faça login</a>
+            Já tem uma conta? <a href="../View/login.php">Faça login</a>
           </p>
                 
                 

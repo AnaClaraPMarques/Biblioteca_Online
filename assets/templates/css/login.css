@@ -26,26 +26,26 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 100px; /* Aumentei o espaço entre a logo e o card */
+    gap: 100px; 
     width: 100%;
     max-width: 1200px;
 }
 
-/* CARD DE LOGIN (Aumentado) */
+
 .login-box {
-    width: 480px; /* Ficou mais robusto */
+    width: 480px; 
     background-color: #ffffff;
-    border-radius: 25px; /* Bordas mais suaves */
-    padding: 60px 40px;  /* Mais respiro interno */
+    border-radius: 25px; 
+    padding: 60px 40px;  
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.3);
 }
 
-/* ÍCONE DE USUÁRIO */
+
 .icone-usuario {
-    width: 120px;  /* Maior como na foto */
+    width: 120px;  
     height: 120px;
     background-color: #5b4636;
     border-radius: 50%;
@@ -60,23 +60,23 @@ body {
     font-size: 35px;
 }
 
-/* FORMULÁRIO */
+
 form {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o botão e o texto */
+    align-items: center; 
 }
 
 .campo {
-    width: 100%; /* Agora ocupa o card todo com margem interna */
+    width: 100%; 
     margin-bottom: 30px;
 }
 
 form label {
     display: block;
     color: #5b4636;
-    font-size: 18px; /* Texto do label maior */
+    font-size: 18px; 
     font-weight: 600;
     margin-bottom: 10px;
     margin-left: 5px;
@@ -84,25 +84,25 @@ form label {
 
 form input {
     width: 100%;
-    height: 55px; /* Inputs mais altos */
+    height: 55px; 
     border: 1.5px solid #5b4636;
     border-radius: 50px;
     padding: 0 25px;
     outline: none;
-    font-size: 18px; /* Texto dentro do input maior */
+    font-size: 18px; 
     color: #333;
-    box-sizing: border-box; /* Garante que o padding não quebre a largura */
+    box-sizing: border-box; 
 }
 
-/* BOTÃO DE LOGIN (Poderoso) */
+
 button {
-    width: 100%; /* Botão agora acompanha a largura dos inputs */
+    width: 100%; 
     height: 60px;
     background-color: #5b4636;
     color: white;
     border: none;
     border-radius: 50px;
-    font-size: 22px; /* Letra grande e legível */
+    font-size: 22px; 
     font-weight: bold;
     cursor: pointer;
     margin-top: 15px;
@@ -111,10 +111,10 @@ button {
 
 button:hover {
     filter: brightness(1.2);
-    transform: translateY(-2px); /* Efeito de flutuar ao passar o mouse */
+    transform: translateY(-2px); 
 }
 
-/* LINK DE CADASTRO */
+
 .footer-text {
     margin-top: 25px;
     font-size: 15px;
@@ -126,9 +126,9 @@ button:hover {
     font-weight: bold;
 }
 
-/* Estilo da mensagem de erro profissional */
+
 .msg-erro {
-    display: none; /* Começa escondida */
+    display: none; 
     background-color: #ffebee;
     color: #c62828;
     border: 1px solid #ef9a9a;
@@ -142,18 +142,7 @@ button:hover {
     gap: 10px;
 }
 
-/* Quando houver erro, vamos adicionar essa classe via JS */
+
 .msg-erro.ativo {
     display: flex;
-}
-/* RESPONSIVIDADE */
-@media(max-width: 900px) {
-    .conteudo {
-        flex-direction: column;
-        gap: 40px;
-    }
-    .login-box {
-        width: 90%;
-        padding: 40px 20px;
-    }
 }

@@ -6,12 +6,13 @@
 
     <title>Biblioteca C's</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/templates/css/global.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
 
-    <!-- MENU -->
+
     <header>
         <nav>
             <h1> Biblioteca C's</h1>
@@ -26,7 +27,7 @@
     </header>
 
 
-    <!-- PRINCIPAL -->
+  
     <main>
 
         <section class="inicio">
@@ -122,12 +123,14 @@
     </main>
 
 
-    <!-- RODAPÉ -->
+
     <footer>
 
         <p>© 2026 Biblioteca C's — Biblioteca Online</p>
 
     </footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </body>
 </html>

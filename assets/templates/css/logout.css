@@ -1,0 +1,142 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("../images/Gemini_Generated_Image_5uge5r5uge5r5uge\ 17\ \(1\).png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px; /* Aumentei o espaço entre a logo e o card */
+    width: 100%;
+    max-width: 1200px;
+}
+
+.logout-box {
+    width: 440px;
+    min-height: 450px;
+
+    background-color: white;
+    border-radius: 25px;
+
+    padding: 50px 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.10);
+}
+
+
+
+.icone-logout {
+    width: 120px;
+    height: 120px;
+
+    background-color: #604a3a;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 30px;
+}
+
+.icone-logout i {
+    color: white;
+    font-size: 55px;
+}
+
+
+
+.logout-box h1 {
+    color: #604a3a;
+    font-size: 26px;
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+.mensagem {
+    color: #555;
+    font-size: 16px;
+
+    margin-bottom: 30px;
+}
+
+
+
+.botoes {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-login,
+.btn-inicio {
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+
+
+.btn-login {
+    background-color: #604a3a;
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: #4d3b2f;
+    color: white;
+}
+
+
+.btn-inicio {
+    border: 1px solid #604a3a;
+    color: #604a3a;
+    background-color: white;
+}
+
+.btn-inicio:hover {
+    background-color: #604a3a;
+    color: white;
+}

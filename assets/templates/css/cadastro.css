@@ -1,0 +1,263 @@
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arimo', Arial, Helvetica, sans-serif;
+    background-image: url("../images/planodefundoaltaresolucao.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+
+main {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 3rem 1rem;
+
+    color: #5b4636;
+}
+
+
+.container-cadastro {
+    width: 62rem;
+    max-width: 95%;
+
+    min-height: 83.8rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ffffff;
+
+    padding: 4rem;
+
+    border-radius: 1rem;
+
+    position: relative;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.logo-altrepository {
+    width: 15rem;
+
+    position: absolute;
+
+    top: 2rem;
+    left: 2rem;
+
+    filter: drop-shadow(
+        0 0 8px rgba(26, 43, 141, 0.7)
+    );
+}
+
+
+
+.perfil-container {
+    position: relative;
+
+    width: 12rem;
+    height: 12rem;
+
+    margin-bottom: 3rem;
+
+    flex-shrink: 0;
+}
+
+.circulo-azul {
+    width: 12rem;
+    height: 12rem;
+
+    display: block;
+}
+
+.icone-perfil {
+    width: 6.5rem;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+
+
+form {
+    width: 100%;
+    max-width: 55rem;
+}
+
+
+
+.form-label {
+    display: block;
+
+    font-size: 2rem;
+
+    color: #0E408F;
+
+    margin-bottom: 0.5rem;
+}
+
+
+
+.form-control {
+    width: 100%;
+
+    height: 5rem;
+
+    font-size: 1.7rem;
+
+    border-radius: 3rem;
+
+    border: 1px solid #5b4636;
+
+    margin-bottom: 2rem;
+
+    padding: 0 2rem;
+}
+
+.form-control:focus {
+    border-color: #0E408F;
+
+    box-shadow: 0 0 0 0.2rem rgba(14, 64, 143, 0.2);
+}
+
+
+
+.btn-primary {
+    width: 100%;
+
+    height: 5rem;
+
+    margin-top: 1rem;
+
+    border-radius: 3rem;
+
+    background-color: #5b4636;
+
+    border: none;
+
+    font-size: 2rem;
+
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #46352a;
+}
+
+
+
+p {
+    text-align: center;
+
+    margin-top: 2rem;
+
+    font-size: 1.6rem;
+
+    font-weight: bold;
+}
+
+.pglogin {
+    color: #0E408F;
+
+    text-decoration: none;
+}
+
+.pglogin:hover {
+    text-decoration: underline;
+}
+
+
+
+.mensagem {
+    display: block;
+
+    font-size: 1.35rem;
+
+    font-weight: 600;
+
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+    margin-left: 1.2rem;
+
+    transition: 0.3s;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .container-cadastro {
+        width: 95%;
+        min-height: auto;
+
+        padding: 8rem 2rem 3rem;
+    }
+
+    .logo-altrepository {
+        width: 11rem;
+
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+
+    .perfil-container {
+        width: 9rem;
+        height: 9rem;
+
+        margin-bottom: 2rem;
+    }
+
+    .circulo-azul {
+        width: 9rem;
+        height: 9rem;
+    }
+
+    .icone-perfil {
+        width: 5rem;
+    }
+
+    .form-label {
+        font-size: 1.5rem;
+    }
+
+    .form-control {
+        height: 4.5rem;
+
+        font-size: 1.4rem;
+    }
+
+    .btn-primary {
+        height: 4.5rem;
+
+        font-size: 1.6rem;
+    }
+
+    p {
+        font-size: 1.3rem;
+    }
+}

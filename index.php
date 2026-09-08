@@ -71,7 +71,8 @@
 
                         <span>Fantasia</span>
 
-                        <button>Realizar Empréstimo</button>
+                      
+                       <a href="View/emprestimo.php?livro=pequeno-principe" class="botao-emprestimo">Realizar Empréstimo</a>
                     </div>
 
                 </div>
@@ -91,7 +92,10 @@
 
                         <span>Romance</span>
 
-                        <button>Realizar Empréstimo</button>
+                       
+<a href="View/emprestimo.php?livro=dom-casmurro" class="botao-emprestimo">
+    Realizar Empréstimo
+</a>
                     </div>
 
                 </div>
@@ -105,13 +109,15 @@
                     </div>
 
                     <div class="informacoes">
-                        <h3>Harry Potter</h3>
+                        <h3>Harry Potter e a Pedra Filosofal</h3>
 
                         <p>J. K. Rowling</p>
 
                         <span>Fantasia</span>
-
-                        <button>Realizar Empréstimo</button>
+                     
+<a href="View/emprestimo.php?livro=harry-potter" class="botao-emprestimo">
+    Realizar Empréstimo
+</a>
                     </div>
                   </div>
                
@@ -131,7 +137,11 @@
 
                         <span>Romance Distópico</span>
 
-                        <button>Realizar Empréstimo</button>
+                   
+<a href="View/emprestimo.php?livro=1984" class="botao-emprestimo">
+    Realizar Empréstimo
+</a>
+
                     </div>
                 </div>
 
@@ -150,7 +160,9 @@
 
                         <span>Romance Modernista</span>
 
-                        <button>Realizar Empréstimo</button>
+<a href="View/emprestimo.php?livro=capitaes-de-areia" class="botao-emprestimo">
+    Realizar Empréstimo
+</a>
                     </div>
                 </div>
 

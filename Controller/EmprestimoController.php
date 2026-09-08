@@ -19,13 +19,7 @@ public function realizar()
     $data_emprestimo = $_POST['data_emprestimo'];
     $data_devolucao = $_POST['data_devolucao'];
 
-    $emprestimo->realizar(
-        $id_emprestimo,
-        $isbn,
-        $id_usuario,
-        $data_emprestimo,
-        $data_devolucao
-    );
+    $emprestimo->realizar($id_emprestimo,$isbn,$id_usuario,$data_emprestimo,$data_devolucao);
 }
 
     public function listar()

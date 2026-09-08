@@ -7,23 +7,115 @@ use Model\Usuario;
 
 class UsuarioController
 {
-    public function listar()
+
+ private $userModel;
+
+ public function __construct()
     {
-        // listar usuários
+        $this->userModel = new User();
     }
 
-    public function cadastrar()
+
+    private function validateEmptyFields(string $nome, string $email, string $senha):bool
     {
-        // cadastrar usuário
+         if empty($nome) or empty($email) or empty($senha) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function listar() {   
+        
+    $usuarios = $this->usuarioModel->listarTodos(); 
+    
+    require_once '../views/usuarios/listar.php'; 
+    } 
+    
+    public function cadastrar() { 
+        
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') { 
+
+        return; 
+        } 
+        
+        $nome = $_POST['nome'] ?? ''; 
+        $email = $_POST['email'] ?? ''; 
+        $senha = $_POST['senha'] ?? ''; 
+        
+        if (!$this->validateEmptyFields($nome, $email, $senha)) { 
+            echo "Preencha todos os campos."; 
+            return; 
+            } 
+            
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+             echo "E-mail inválido."; 
+             return; } 
+             
+             $senha = password_hash($senha, PASSWORD_DEFAULT); 
+             
+             $this->usuarioModel->cadastrar($nome, $email, $senha); 
+             
+             echo "Usuário cadastrado com sucesso!"; } 
+
+   
     }
 
     public function editar()
     {
-        // editar usuário
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') { 
+        return; 
+        }
+
+        $id = $_POST['id'] ?? null; 
+        $nome = $_POST['nome'] ?? ''; 
+        $email = $_POST['email'] ?? '';
+
+        if (!$id) { 
+        echo "Usuário não encontrado."; 
+        return; 
+        }
+
+        if (trim($nome) === '' || trim($email) === '') { 
+        echo "Preencha todos os campos."; 
+        return; 
+        } 
+        
+         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { 
+        echo "E-mail inválido."; 
+        return; 
+        } 
+        
+        $resultado = $this->usuarioModel->editar( $id, $nome, $email ); 
+        
+        if ($resultado) { 
+        echo "Usuário atualizado com sucesso!"; 
+        } else { 
+        echo "Erro ao atualizar usuário."; 
+        } 
+    }
+    
+
+public function excluir()
+{
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        return;
     }
 
-    public function excluir()
-    {
-        // excluir usuário
+    $id = $_POST['id'] ?? null;
+
+    if (!$id) {
+        echo "Usuário não encontrado.";
+        return;
+    }
+
+    $resultado = $this->usuarioModel->excluir($id);
+
+    if ($resultado) {
+        echo "Usuário excluído com sucesso!";
+    } else {
+        echo "Erro ao excluir usuário.";
     }
 }
+
+

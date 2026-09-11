@@ -1,5 +1,6 @@
   <?php
   
+   namespace Model;
   class Emprestimo
 {
 
@@ -11,7 +12,7 @@ private \PDO $connection;
     }
 
 
-  public function realizar(int $id_emprestimo, int $isbn, int $id_usuario,int $data_emprestimo,int $data_devolucao) {
+  public function realizar(int $id_emprestimo, int $isbn, int $id_usuario,int $data_emprestimo,int $data_devolucao): bool {
     $sql = "INSERT INTO emprestimo (id_emprestimo, isbn, id_usuario, data_emprestimo, data_devolucao)
             VALUES (:id_emprestimo, :isbn, :id_usuario, :data_emprestimo, :data_devolucao)";
 
@@ -25,6 +26,8 @@ private \PDO $connection;
         ':data_devolucao' => $data_devolucao
     ]);
 
+  }
+
     public function listar () : array{
 
     $stmt = $this->connection->query("SELECT * FROM emprestimos");
@@ -33,7 +36,7 @@ private \PDO $connection;
     }
 }
 
-public function devolver(int $id_emprestimo, int $isbn, int $id_usuario,int $data_emprestimo,int $data_devolucao){
+public function devolver(int $id_emprestimo, int $isbn, int $id_usuario,int $data_emprestimo,int $data_devolucao) :bool{
 
    $sql = "UPDATE emprestimo
                 SET data_devolucao = :data_devolucao
@@ -53,12 +56,12 @@ public function devolver(int $id_emprestimo, int $isbn, int $id_usuario,int $dat
         ]);
     }
 
-}
 
-public function renovar (int $id_usuario, int $data_emprestimo, int $data_devolucao): array{
+
+public function renovar (int $id_usuario, int $data_emprestimo, int $data_devolucao): bool{
    $sql = "UPDATE emprestimos
-          SET data_emprestimo = :data_emprestimo,
-          WHERE id_emprestimo = :id_emprestimo,
+          SET data_emprestimo = :data_emprestimo
+          WHERE id_emprestimo = :id_emprestimo
           AND id_usuario = :id_usuario";
 
            $stmt = $this->connection->prepare($sql);

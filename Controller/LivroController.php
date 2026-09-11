@@ -24,15 +24,15 @@ class LivroController
     public function cadastrar()
     {
         $livro = new Livro($this->connection);
-        $livro->cadastrar($_POST['titulo'], $_POST['autor'], $_POST['isbn'], $_POST['genero'], $_POST['ano']);
+        $livro->cadastrar($_POST['isbn'], $_POST['titulo'], $_POST['autor'], $_POST['genero'], $_POST['ano']);
         return $livro;
 
     }
 
-    public function editar()
+    public function editar() :void
     {
         $livro = new Livro($this->connection);
-        $livro->editar($_POST['isbn'], $_POST['titulo'], $_POST['autor'], $_POST['isbn']);
+        $livro->editar($_POST['isbn'], $_POST['titulo'], $_POST['autor'], $_POST['genero'], $_POST['ano']);
         return $livro;
     }
 
@@ -44,8 +44,6 @@ class LivroController
     }
 
     
-
-//VER ESSE ERRO AQUI
     public function buscar()
     {
         $livro = new Livro($this->connection);
@@ -54,18 +52,11 @@ class LivroController
         return $livro->buscar( $_POST['titulo'], $_POST['autor'] ); 
         }
 
-        //Claraa, esse é um if alternativo para alteração 
-        //depois da criação da pasta buscarLivro da View
-        //porque com esse ´palavra´ele vai buscar não só o título ou isbn
-        //Vai buscar por 
-        //qualquer referÊncia da pesquisa que tenha a ver com o livro:
+        if (isset($_POST['palavra'])) { 
+         return $livro->buscar($_POST['palavra']); 
+         }    
+       return [];
 
-        //
-         // if (isset($_POST['palavra'])) { 
-         // return $livro->buscar($_POST['palavra']); 
-         // }    
-         // return [];
-         // }
         
     }
 }

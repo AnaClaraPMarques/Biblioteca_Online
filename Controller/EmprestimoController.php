@@ -38,7 +38,7 @@ public function realizar()
         // renovar empréstimo
     }
 
-    public function atrasados()
+    public function listarAtrasados()
     {
         // listar empréstimos atrasados
     }

@@ -8,17 +8,18 @@ use Model\Usuario;
 class UsuarioController
 {
 
- private $userModel;
-
- public function __construct()
+   private Usuario $usuarioModel;
+ 
+    public function __construct(\PDO $connection)
     {
-        $this->userModel = new User();
+        $this->usuarioModel = new Usuario($connection);
     }
 
+ 
 
     private function validateEmptyFields(string $nome, string $email, string $senha):bool
     {
-         if empty($nome) or empty($email) or empty($senha) {
+         if(empty($nome) or empty($email) or empty($senha)){
             return false;
         }
 
@@ -116,6 +117,13 @@ public function excluir()
     } else {
         echo "Erro ao excluir usuário.";
     }
+
+      public function listar(): void
+
+
+ $usuarios = $this->usuarioModel->listarTodos();
+
+
 }
 
-
+    

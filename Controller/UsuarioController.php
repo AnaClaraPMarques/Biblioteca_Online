@@ -7,9 +7,6 @@ use Model\Usuario;
 
 class UsuarioController 
 {
-    private $usuarioModel;
-
-<<<<<<< HEAD
    private Usuario $usuarioModel;
  
     public function __construct(\PDO $connection)
@@ -22,17 +19,18 @@ class UsuarioController
     private function validateEmptyFields(string $nome, string $email, string $senha):bool
     {
          if(empty($nome) or empty($email) or empty($senha)){
-=======
-    public function __construct()
-    {
-        $this->usuarioModel = new User();
+            return false;
+
+         }
+
+         return true;
     }
 
     //TIRAR DUVIDA COM A PROFESSORA SOBRE ESSA FUNÇÃO, SE É NECESSÁRIO OU NÃO
     private function validateEmptyFields(string $nome, string $email, string $senha): bool
     {
         if (empty($nome) || empty($email) || empty($senha)) {
->>>>>>> d4fca129daad68f187ff91b0f487bc2d4d753e54
+
             return false;
         }
 
@@ -127,7 +125,6 @@ class UsuarioController
             echo "Erro ao excluir usuário.";
         }
     }
-<<<<<<< HEAD
 
     $id = $_POST['id'] ?? null;
 
@@ -152,7 +149,3 @@ class UsuarioController
 
 }
 
-    
-=======
-}
->>>>>>> d4fca129daad68f187ff91b0f487bc2d4d753e54

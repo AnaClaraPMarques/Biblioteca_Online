@@ -72,22 +72,22 @@ class Emprestimo
     }
 
  
-    public function renovar(
-        int $id_emprestimo,
-        string $nova_data_devolucao
-    ): bool {
+   public function renovar(
+    int $id_emprestimo,
+    string $nova_data_devolucao
+): bool {
 
-        $sql = "UPDATE emprestimos
-                SET data_devolucao = :data_devolucao
-                WHERE id_emprestimo = :id_emprestimo";
+    $sql = "UPDATE emprestimos
+            SET data_devolucao = :data_devolucao
+            WHERE id_emprestimo = :id_emprestimo";
 
-        $stmt = $this->connection->prepare($sql);
+    $stmt = $this->connection->prepare($sql);
 
-        return $stmt->execute([
-            ':id_emprestimo' => $id_emprestimo,
-            ':data_devolucao' => $nova_data_devolucao
-        ]);
-    }
+    return $stmt->execute([
+        ':data_devolucao' => $nova_data_devolucao,
+        ':id_emprestimo' => $id_emprestimo
+    ]);
+}
 
   
     public function listarAtrasados(): array

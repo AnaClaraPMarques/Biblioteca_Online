@@ -1,47 +1,47 @@
 <?php
 
-$livros = [
+require_once __DIR__ . '/config/configuration.php';
+require_once __DIR__ . '/Model/Connection.php';
+require_once __DIR__ . '/Model/Emprestimo.php';
+require_once __DIR__ . '/Controller/EmprestimoController.php';
 
-    "pequeno-principe" => [
-        "titulo" => "O Pequeno Príncipe",
-        "autor" => "Antoine de Saint-Exupéry",
-        "categoria" => "Fantasia",
-        "imagem" => "../img/OpequenoPrincipe.jpg"
-    ],
+use Model\Connection;
+use Controller\EmprestimoController;
 
-    "dom-casmurro" => [
-        "titulo" => "Dom Casmurro",
-        "autor" => "Machado de Assis",
-        "categoria" => "Romance",
-        "imagem" => "../img/DomCasmurro.jpg"
-    ],
+$connection = Connection::getInstance();
 
-    "harry-potter" => [
-        "titulo" => "Harry Potter",
-        "autor" => "J. K. Rowling",
-        "categoria" => "Fantasia",
-        "imagem" => "../img/HarryPotter.jpg"
-    ],
+$controller = new EmprestimoController($connection);
 
-    "1984" => [
-        "titulo" => "1984",
-        "autor" => "George Orwell",
-        "categoria" => "Romance Distópico",
-        "imagem" => "../img/1984.png"
-    ],
+$acao = $_POST['acao'] ?? '';
 
-    "capitaes-de-areia" => [
-        "titulo" => "Capitães de Areia",
-        "autor" => "Jorge Amado",
-        "categoria" => "Romance Modernista",
-        "imagem" => "../img/CapitaesdeAreia.png"
-    ]
+if ($acao === 'realizar') {
 
-];
+    $controller->realizar();
 
-$livroSelecionado = $_GET["livro"] ?? "pequeno-principe";
+    header('Location: index.php');
+    exit;
 
-$livro = $livros[$livroSelecionado] ?? $livros["pequeno-principe"];
+}
+
+if ($acao === 'renovar') {
+
+    $controller->renovar();
+
+    header('Location: index.php');
+    exit;
+
+}
+
+if ($acao === 'devolver') {
+
+    $controller->devolver();
+
+    header('Location: index.php');
+    exit;
+
+}
+
+echo "Ação inválida.";
 
 ?>
 
@@ -99,7 +99,7 @@ $livro = $livros[$livroSelecionado] ?? $livros["pequeno-principe"];
         <div class="livro-selecionado">
 
             <img
-                src="<?php echo $livro['imagem']; ?>"
+                src="<?php echo $livros['imagem']; ?>"
                 alt="Capa do livro <?php echo $livro['titulo']; ?>"
             >
 
@@ -122,47 +122,94 @@ $livro = $livros[$livroSelecionado] ?? $livros["pequeno-principe"];
         </div>
 
 
-        <div class="informacoes-emprestimo">
+       <form method="POST" action="../Emprestimo.php">
 
-            <div>
+    <input
+        type="hidden"
+        name="acao"
+        value="realizar"
+    >
 
-                <strong>Data do empréstimo:</strong>
+    <input
+        type="hidden"
+        name="isbn"
+        value="<?php
+            $isbnLivros = [
+                'pequeno-principe' => '975',
+                'dom-casmurro' => '978',
+                'harry-potter' => '973',
+                '1984' => '979',
+                'capitaes-de-areia' => '974'
+            ];
 
-                <p>
-                    02/09/2026
-                </p>
+            echo $isbnLivros[$livroSelecionado] ?? '975';
+        ?>"
+    >
 
-            </div>
+    <input
+        type="hidden"
+        name="id_usuario"
+        value="2"
+    >
 
+    <div class="informacoes-emprestimo">
 
-            <div>
+        <div>
 
-                <strong>Data de devolução:</strong>
+            <strong>Data do empréstimo:</strong>
 
-                <p>
-                    16/09/2026
-                </p>
+            <p>
+                <?= date('d/m/Y') ?>
+            </p>
 
-            </div>
-
-        </div>
-
-
-        <div class="botoes">
-
-            <a
-                href="../index.php#livros"
-                class="cancelar"
+            <input
+                type="hidden"
+                name="data_emprestimo"
+                value="<?= date('Y-m-d') ?>"
             >
-                Cancelar
-            </a>
-
-            <a  href="../index.php#emprestimos"
-                class="confirmar"><button class="confirmar">
-                Confirmar empréstimo
-            </button></a>
 
         </div>
+
+
+        <div>
+
+            <strong>Data de devolução:</strong>
+
+            <p>
+                <?= date('d/m/Y', strtotime('+14 days')) ?>
+            </p>
+
+            <input
+                type="hidden"
+                name="data_devolucao"
+                value="<?= date('Y-m-d', strtotime('+14 days')) ?>"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="botoes">
+
+        <a
+            href="../index.php#livros"
+            class="cancelar"
+        >
+            Cancelar
+        </a>
+
+        <button
+            type="submit"
+            class="confirmar"
+        >
+            Confirmar empréstimo
+        </button>
+
+    </div>
+
+</form>
+
 
     </div>
 

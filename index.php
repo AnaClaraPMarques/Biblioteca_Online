@@ -1,12 +1,20 @@
 <?php
 
-require_once "Model/Connection.php";
+require_once __DIR__ . '/config/configuration.php';
+require_once __DIR__ . '/Model/Connection.php';
+require_once __DIR__ . '/Model/Emprestimo.php';
 
 use Model\Connection;
+use Model\Emprestimo;
 
 $connection = Connection::getInstance();
-
 echo "BANCO CONECTADO!";
+
+$emprestimoModel = new Emprestimo($connection);
+
+$id_usuario = 2;
+
+$emprestimos = $emprestimoModel->listarPorUsuario($id_usuario);
 
 ?>
 
@@ -190,36 +198,91 @@ echo "BANCO CONECTADO!";
  
             <div class="lista-emprestimos">
  
-                <?php if (empty($emprestimos)): ?>
+               <div class="lista-emprestimos">
 
-    <p>Nenhum empréstimo encontrado.</p>
+    <?php if (empty($emprestimos)): ?>
 
-<?php else: ?>
+        <p>Nenhum empréstimo realizado.</p>
 
-    <?php foreach ($emprestimos as $emprestimo): ?>
+    <?php else: ?>
 
-        <div class="emprestimo">
+        <?php foreach ($emprestimos as $emprestimo): ?>
 
-            <h3>
-                <?= htmlspecialchars($emprestimo['titulo']) ?>
-            </h3>
+            <div class="emprestimo">
 
-            <p>
-                Data de empréstimo:
-                <?= date('d/m/Y', strtotime($emprestimo['data_emprestimo'])) ?>
-            </p>
+                <h3>
+                    <?= htmlspecialchars($emprestimo['titulo']) ?>
+                </h3>
 
-            <p>
-                Data de devolução:
-                <?= date('d/m/Y', strtotime($emprestimo['data_devolucao'])) ?>
-            </p>
+                <p>
+                    Data de empréstimo:
+                    <?= date(
+                        'd/m/Y',
+                        strtotime($emprestimo['data_emprestimo'])
+                    ) ?>
+                </p>
 
-        </div>
+                <p>
+                    Data de devolução:
+                    <?= date(
+                        'd/m/Y',
+                        strtotime($emprestimo['data_devolucao'])
+                    ) ?>
+                </p>
 
-    <?php endforeach; ?>
+                <form method="POST" action="Emprestimo.php">
 
-<?php endif; ?>
- 
+                    <input
+                        type="hidden"
+                        name="acao"
+                        value="renovar"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="id_emprestimo"
+                        value="<?= $emprestimo['id_emprestimo'] ?>"
+                    >
+
+                    <input
+                        type="date"
+                        name="nova_data_devolucao"
+                        required
+                    >
+
+                    <button type="submit">
+                        Renovar
+                    </button>
+
+                </form>
+
+                <form method="POST" action="Emprestimo.php">
+
+                    <input
+                        type="hidden"
+                        name="acao"
+                        value="devolver"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="id_emprestimo"
+                        value="<?= $emprestimo['id_emprestimo'] ?>"
+                    >
+
+                    <button type="submit">
+                        Devolver
+                    </button>
+
+                </form>
+
+            </div>
+
+        <?php endforeach; ?>
+
+    <?php endif; ?>
+
+</div>
             </div>
  
         </section>

@@ -46,18 +46,28 @@ class EmprestimoController
         return $emprestimo->devolver($id_emprestimo);
     }
 
-    public function renovar()
-    {
-        $emprestimo = new Emprestimo($this->connection);
+   public function renovar()
+{
+    $emprestimo = new Emprestimo($this->connection);
 
-        $id_emprestimo = $_POST['id_emprestimo'];
-        $nova_data_devolucao = $_POST['nova_data_devolucao'];
+    $id_emprestimo = (int) ($_POST['id_emprestimo'] ?? 0);
+    $nova_data_devolucao = $_POST['nova_data_devolucao'] ?? '';
 
-        return $emprestimo->renovar(
-            $id_emprestimo,
-            $nova_data_devolucao
-        );
+    if (!$id_emprestimo || !$nova_data_devolucao) {
+        echo "Dados para renovação incompletos.";
+        return;
     }
+
+    $resultado = $emprestimo->renovar(
+        $id_emprestimo,
+        $nova_data_devolucao
+    );
+
+    if (!$resultado) {
+        echo "Erro ao renovar empréstimo.";
+        return;
+    }
+}
 
     public function listarAtrasados()
     {

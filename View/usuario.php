@@ -12,7 +12,7 @@ $connection = Connection::getInstance();
 $emprestimoModel = new Emprestimo($connection);
 
 
-$id_usuario = 2;
+$_SESSION['id_usuario'];
 
 $emprestimos = $emprestimoModel->listarPorUsuario($id_usuario);
 

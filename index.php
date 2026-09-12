@@ -1,3 +1,16 @@
+<?php
+
+require_once "Model/Connection.php";
+
+use Model\Connection;
+
+$connection = Connection::getInstance();
+
+echo "BANCO CONECTADO!";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -177,17 +190,35 @@
  
             <div class="lista-emprestimos">
  
-                <div class="emprestimo">
-                    <h3>O Pequeno Príncipe</h3> <br>
-                    <p>Data de empréstimo: 01/06/2026</p>
-                    <p>Data de devolução: 15/06/2026</p>
-                </div>
- 
-                <div class="emprestimo">
-                    <h3>Dom Casmurro</h3> <br>
-                    <p>Data de empréstimo: 05/06/2026</p>
-                    <p>Data de devolução: 20/06/2026</p>
-                </div>
+                <?php if (empty($emprestimos)): ?>
+
+    <p>Nenhum empréstimo encontrado.</p>
+
+<?php else: ?>
+
+    <?php foreach ($emprestimos as $emprestimo): ?>
+
+        <div class="emprestimo">
+
+            <h3>
+                <?= htmlspecialchars($emprestimo['titulo']) ?>
+            </h3>
+
+            <p>
+                Data de empréstimo:
+                <?= date('d/m/Y', strtotime($emprestimo['data_emprestimo'])) ?>
+            </p>
+
+            <p>
+                Data de devolução:
+                <?= date('d/m/Y', strtotime($emprestimo['data_devolucao'])) ?>
+            </p>
+
+        </div>
+
+    <?php endforeach; ?>
+
+<?php endif; ?>
  
             </div>
  

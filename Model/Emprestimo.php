@@ -1,87 +1,105 @@
 <?php
-  
-   namespace Model;
-  class Emprestimo
-{
 
-private \PDO $connection;
- 
+namespace Model;
+
+class Emprestimo
+{
+    private \PDO $connection;
+
     public function __construct(\PDO $connection)
     {
         $this->connection = $connection;
     }
 
+  
+    public function realizar(
+        string $isbn,
+        int $id_usuario,
+        string $data_emprestimo,
+        string $data_devolucao
+    ): bool {
 
-  public function realizar(int $id_emprestimo, int $isbn, int $id_usuario,int $data_emprestimo,int $data_devolucao) {
-    $sql = "INSERT INTO emprestimo (id_emprestimo, isbn, id_usuario, data_emprestimo, data_devolucao)
-            VALUES (:id_emprestimo, :isbn, :id_usuario, :data_emprestimo, :data_devolucao)";
+        $sql = "INSERT INTO emprestimos
+                (id_usuario_fk, isbn_fk, data_emprestimo, data_devolucao)
+                VALUES
+                (:id_usuario_fk, :isbn_fk, :data_emprestimo, :data_devolucao)";
 
-    $stmt = $this->connection->prepare($sql);
-
-    $stmt->execute([
-        ':id_emprestimo' => $id_emprestimo,
-        ':isbn' => $isbn,
-        ':id_usuario' => $id_usuario,
-        ':data_emprestimo' => $data_emprestimo,
-        ':data_devolucao' => $data_devolucao
-    ]);
-
-  }
-
-
-public function devolver(int $id_emprestimo, int $isbn, int $id_usuario,int $data_emprestimo,int $data_devolucao) :bool{
-
-   $sql = "UPDATE emprestimo
-                SET data_devolucao = :data_devolucao
-                WHERE id_emprestimo = :id_emprestimo
-                  AND isbn = :isbn
-                  AND id_usuario = :id_usuario
-                  AND data_emprestimo = :data_emprestimo";
- 
         $stmt = $this->connection->prepare($sql);
- 
+
         return $stmt->execute([
-            ':id_emprestimo' => $id_emprestimo,
-            ':isbn' => $isbn,
-            ':id_usuario' => $id_usuario,
+            ':id_usuario_fk' => $id_usuario,
+            ':isbn_fk' => $isbn,
             ':data_emprestimo' => $data_emprestimo,
             ':data_devolucao' => $data_devolucao
         ]);
     }
 
-public function renovar (int $id_usuario, int $data_emprestimo, int $data_devolucao): bool{
-   $sql = "UPDATE emprestimos
-          SET data_emprestimo = :data_emprestimo
-          WHERE id_usuario = :id_usuario";
+    
+    public function listarPorUsuario(int $id_usuario): array
+{
+    $sql = "SELECT
+                e.id_emprestimo,
+                e.isbn_fk,
+                e.data_emprestimo,
+                e.data_devolucao,
+                l.titulo
+            FROM emprestimos e
+            INNER JOIN livros l
+                ON e.isbn_fk = l.isbn
+            WHERE e.id_usuario_fk = :id_usuario
+            ORDER BY e.data_emprestimo DESC";
 
-           $stmt = $this->connection->prepare($sql);
+    $stmt = $this->connection->prepare($sql);
 
-    return $stmt->execute([
-        ':id_emprestimo' => $data_emprestimo,
-        ':id_usuario' => $id_usuario,
-        ':data_devolucao' => $data_devolucao
+    $stmt->execute([
+        ':id_usuario' => $id_usuario
     ]);
 
+    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 }
 
-public function listarAtrasados(): array
-{
-    $sql = "SELECT * FROM emprestimo
-            WHERE data_devolucao < CURDATE()
-              AND devolvido = 0";
+   
+    public function devolver(int $id_emprestimo): bool
+    {
+        $sql = "DELETE FROM emprestimos
+                WHERE id_emprestimo = :id_emprestimo";
+
+        $stmt = $this->connection->prepare($sql);
+
+        return $stmt->execute([
+            ':id_emprestimo' => $id_emprestimo
+        ]);
+    }
+
+ 
+    public function renovar(
+        int $id_emprestimo,
+        string $nova_data_devolucao
+    ): bool {
+
+        $sql = "UPDATE emprestimos
+                SET data_devolucao = :data_devolucao
+                WHERE id_emprestimo = :id_emprestimo";
+
+        $stmt = $this->connection->prepare($sql);
+
+        return $stmt->execute([
+            ':id_emprestimo' => $id_emprestimo,
+            ':data_devolucao' => $nova_data_devolucao
+        ]);
+    }
+
+  
+    public function listarAtrasados(): array
+    {
+        $sql = "SELECT *
+            FROM emprestimos
+            WHERE data_devolucao < CURDATE()";
 
     $stmt = $this->connection->query($sql);
 
     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 }
-
-
-    public function totalEmprestimos () : array{
-
-    $stmt = $this->connection->query("SELECT * FROM emprestimos");
- 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
 
 
 }

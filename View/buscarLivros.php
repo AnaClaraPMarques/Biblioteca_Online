@@ -1,15 +1,24 @@
 <?php
- 
+
 require_once __DIR__ . '/../config/configuration.php';
+require_once __DIR__ . '/../Model/Connection.php';
 require_once __DIR__ . '/../Model/Livro.php';
- 
+
+use Model\Connection;
+use Model\Livro;
+
+$connection = Connection::getInstance();
+
 $termo = trim($_GET['q'] ?? '');
- 
-$livroModel = new \Model\Livro($connection);
- 
-$resultados = $termo !== '' ? $livroModel->buscar($termo) : $livroModel->listarTodos();
- 
+
+$livroModel = new Livro($connection);
+
+$resultados = $termo !== ''
+    ? $livroModel->buscar($termo)
+    : $livroModel->listarTodos();
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

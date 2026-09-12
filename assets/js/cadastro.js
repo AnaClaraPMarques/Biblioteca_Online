@@ -75,18 +75,36 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     if (
-        nome.classList.contains("success") &&
-        email.classList.contains("success") &&
-        senha.classList.contains("success") &&
-        confirmarSenha.classList.contains("success")
+        !nome.classList.contains("success") ||
+        !email.classList.contains("success") ||
+        !senha.classList.contains("success") ||
+        !confirmarSenha.classList.contains("success")
     ) {
-
-        alert("Cadastro realizado com sucesso!");
-
-        form.reset();
-
-        limparTudo();
+        alert("Corrija os campos antes de realizar o cadastro.");
+        return;
     }
+
+    fetch(form.action, {
+        method: "POST",
+        body: new FormData(form)
+    })
+    .then(response => response.text())
+    .then(mensagem => {
+
+        alert(mensagem);
+
+        if (mensagem.includes("sucesso")) {
+            form.reset();
+            limparTudo();
+        }
+
+    })
+    .catch(erro => {
+
+        console.error(erro);
+        alert("Erro ao realizar o cadastro.");
+
+    });
 });
 
 

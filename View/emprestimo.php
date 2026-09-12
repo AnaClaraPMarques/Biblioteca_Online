@@ -157,9 +157,10 @@ $livro = $livros[$livroSelecionado] ?? $livros["pequeno-principe"];
                 Cancelar
             </a>
 
-            <button class="confirmar">
+            <a  href="../index.php#emprestimos"
+                class="confirmar"><button class="confirmar">
                 Confirmar empréstimo
-            </button>
+            </button></a>
 
         </div>
 

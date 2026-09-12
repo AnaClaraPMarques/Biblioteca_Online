@@ -13,14 +13,14 @@ private \PDO $connection;
 
         public function listarTodos(): array
     {
-        $stmt = $this->connection->query("SELECT * FROM livro");
+        $stmt = $this->connection->query("SELECT * FROM livros");
  
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
  
     public function buscarPorIsbn(string $isbn): array|false
     {
-        $sql = "SELECT * FROM livro WHERE isbn = :isbn";
+        $sql = "SELECT * FROM livros WHERE isbn = :isbn";
  
         $stmt = $this->connection->prepare($sql);
         $stmt->execute([':isbn' => $isbn]);
@@ -30,7 +30,7 @@ private \PDO $connection;
  
     public function cadastrar(string $isbn, string $titulo, string $autor, string $genero, int $ano): bool
     {
-        $sql = "INSERT INTO livro (isbn, titulo, autor, genero, ano)
+        $sql = "INSERT INTO livros (isbn, titulo, autor, genero, ano)
                 VALUES (:isbn, :titulo, :autor, :genero, :ano)";
  
         $stmt = $this->connection->prepare($sql);
@@ -46,7 +46,7 @@ private \PDO $connection;
  
     public function editar(string $isbn, string $titulo, string $autor, string $genero, int $ano): bool
     {
-        $sql = "UPDATE livro
+        $sql = "UPDATE livros
                 SET titulo = :titulo, autor = :autor, genero = :genero, ano = :ano
                 WHERE isbn = :isbn";
  
@@ -63,7 +63,7 @@ private \PDO $connection;
  
     public function excluir(string $isbn): bool
     {
-        $sql = "DELETE FROM livro WHERE isbn = :isbn";
+        $sql = "DELETE FROM livros WHERE isbn = :isbn";
  
         $stmt = $this->connection->prepare($sql);
  
@@ -72,7 +72,7 @@ private \PDO $connection;
  
     public function buscar(string $palavra): array
     {
-        $sql = "SELECT * FROM livro
+        $sql = "SELECT * FROM livros
                 WHERE titulo LIKE :palavra OR autor LIKE :palavra";
  
         $stmt = $this->connection->prepare($sql);

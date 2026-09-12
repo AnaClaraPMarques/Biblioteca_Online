@@ -1,3 +1,24 @@
+<?php
+
+require_once __DIR__ . '/../config/configuration.php';
+require_once __DIR__ . '/../Model/Connection.php';
+require_once __DIR__ . '/../Model/Emprestimo.php';
+
+use Model\Connection;
+use Model\Emprestimo;
+
+$connection = Connection::getInstance();
+
+$emprestimoModel = new Emprestimo($connection);
+
+
+$id_usuario = 2;
+
+$emprestimos = $emprestimoModel->listarPorUsuario($id_usuario);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -52,19 +73,16 @@
                 <form class="form-card" id="profile-form" onsubmit="event.preventDefault();">
                     <div class="form-group">
                         <label>Nome completo</label>
-                        <input type="text" id="input-nome" value="Ana Luisa">
+                        <input type="text" id="input-nome" value="">
                     </div>
                     <div class="form-group">
                         <label>E-mail</label>
-                        <input type="email" id="input-email" value="analuisa@ba.estudante.senai.br">
+                        <input type="email" id="input-email" value="">
                     </div>
-                    <div class="form-group">
-                        <label>CPF</label>
-                        <input type="text" id="input-cpf" value="000.000.000-00">
-                    </div>
+                
                     <div class="form-group">
                         <label>Senha</label>
-                        <input type="password" id="input-senha" value="112233445566">
+                        <input type="password" id="input-senha" value="">
                     </div>
                   
                     

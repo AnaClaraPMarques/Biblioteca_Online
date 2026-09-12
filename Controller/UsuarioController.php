@@ -64,11 +64,11 @@ class UsuarioController
             return; 
         }
 
-        $id = $_POST['id'] ?? null; 
+        $id_usuario = $_POST['id_usuario'] ?? null; 
         $nome = $_POST['nome'] ?? ''; 
         $email = $_POST['email'] ?? '';
 
-        if (!$id) { 
+        if (!$id_usuario) { 
             echo "Usuário não encontrado."; 
             return; 
         }
@@ -83,7 +83,7 @@ class UsuarioController
             return; 
         } 
         
-        $resultado = $this->usuarioModel->editar($id, $nome, $email); 
+        $resultado = $this->usuarioModel->editar($id_usuario, $nome, $email); 
         
         if ($resultado) { 
             echo "Usuário atualizado com sucesso!"; 
@@ -98,14 +98,14 @@ class UsuarioController
             return;
         }
 
-        $id = $_POST['id'] ?? null;
+        $id_usuario = $_POST['id_usuario'] ?? null;
 
-        if (!$id) {
+        if (!$id_usuario) {
             echo "Usuário não encontrado.";
             return;
         }
 
-        $resultado = $this->usuarioModel->excluir($id);
+        $resultado = $this->usuarioModel->excluir($id_usuario);
 
         if ($resultado) {
             echo "Usuário excluído com sucesso!";
@@ -114,29 +114,16 @@ class UsuarioController
         }
     
 
-    $id = $_POST['id'] ?? null;
+    $id_usuario = $_POST['id_usuario'] ?? null;
 
-    if (!$id) {
+    if (!$id_usuario) {
         echo "Usuário não encontrado.";
         return;
     }
 
-    $resultado = $this->usuarioModel->excluir($id);
-
-    if ($resultado) {
-        echo "Usuário excluído com sucesso!";
-    } else {
-        echo "Erro ao excluir usuário.";
-    }
-
-}
-
-      public function listaTodos(): void {
-
- $usuarios = $this->usuarioModel->listarTodos();
-
-      }
+  
 
 
 }
 
+}

@@ -36,32 +36,33 @@
  
     public function listarTodos(): array
     {
-        $stmt = $this->connection->query("SELECT id, nome, email FROM usuarios");
+        $stmt = $this->connection->query("SELECT id_usuario, nome, email FROM usuarios");
  
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
     
   
-public function editar( int $id, string $nome, string $email ): bool { 
+public function editar( int $id_usuario, string $nome, string $email ): bool { 
 
-$sql = "UPDATE usuarios SET nome = :nome, email = :email WHERE id = :id"; 
+$sql = "UPDATE usuarios SET nome = :nome, email = :email WHERE id_usuario = :id_usuario"; 
 
 $stmt = $this->connection->prepare($sql); 
 
-return $stmt->execute([ ':id' => $id, ':nome' => $nome, ':email' => $email ]); 
+return $stmt->execute([ ':id_usuario' => $id_usuario, ':nome' => $nome, ':email' => $email ]); 
 }
 
 
-public function excluir(int $id): bool
+public function excluir(int $id_usuario): bool {
 {
     $sql = "DELETE FROM usuarios
-            WHERE id = :id";
+            WHERE id_usuario = :id";
 
     $stmt = $this->connection->prepare($sql);
 
     return $stmt->execute([
-        ':id' => $id
+        ':id_usuario' => $id_usuario
     ]);
 }
 
+}
 }

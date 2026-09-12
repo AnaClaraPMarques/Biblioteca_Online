@@ -8,7 +8,7 @@ botaoSalvar.addEventListener("click", () => {
     dados.append("nome", inputNome.value.trim());
     dados.append("email", inputEmail.value.trim());
  
-    fetch("usuario-salvar.php", {
+    fetch("../usuario.php", {
         method: "POST",
         body: dados
     })

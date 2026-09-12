@@ -31,7 +31,7 @@
     <main>
  
  
-    <form id="formCadastro" method="POST" action="Usuario.php">
+    <form id="formCadastro" method="POST" action="usuario.php">
    <div class="container">
     <div class="conteudo">
       

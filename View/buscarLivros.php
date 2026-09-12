@@ -51,7 +51,7 @@ $resultados = $termo !== '' ? $livroModel->buscar($termo) : $livroModel->listarT
                     <?php endif; ?>
                 </p>
  
-                <form class="pesquisa" method="GET" action="buscar.livros.php">
+                <form class="pesquisa" method="GET" action="Livro.php">
                     <input
                         type="text"
                         name="q"

@@ -27,7 +27,6 @@ public function realizar()
     return $emprestimo->realizar($id_emprestimo,$isbn,$id_usuario,$data_emprestimo,$data_devolucao);
 }
 
-
 public function devolver()
 {
     $emprestimo = new Emprestimo($this->connection);
@@ -35,7 +34,7 @@ public function devolver()
     $id_emprestimo = $_POST['id_emprestimo'];
     $data_devolucao = $_POST['data_devolucao'] ?? date('Y-m-d');
 
-    return $emprestimo->devolver($id_emprestimo, $data_devolucao);
+    return ($emprestimo);
 }
 
 public function renovar()
@@ -45,21 +44,17 @@ public function renovar()
     $id_emprestimo = $_POST['id_emprestimo'];
     $nova_data_devolucao = $_POST['nova_data_devolucao'];
 
-    $emprestimo->renovar($id_emprestimo, $nova_data_devolucao);
+    return ($nova_data_devolucao);
 }
 
-    public function atrasados()
+
+    public function listarAtrasados()
 {
     $emprestimo = new Emprestimo($this->connection);
 
-    return $emprestimo->atrasados(); 
+    return $emprestimo->listarAtrasados(); 
 }
 
-public function emprestimosUsuario($id_usuario){
-
-    $emprestimo = new Emprestimo($this->connection);
-    return $emprestimo->listarEmprestimosUsuario($id_usuario);
-}
 
 public function totalEmprestimos()
 {
@@ -67,11 +62,12 @@ public function totalEmprestimos()
 
     $emprestimo = new Emprestimo($this->connection);
 
-    $listaEmprestimosUsuario = $this->emprestimosUsuario($id_usuario);
+    $listaEmprestimosUsuario = $this->totalEmprestimos($id_usuario);
 
-    return count($listaEmprestimosUsuario);
+    return ($listaEmprestimosUsuario);
 }
 
 }
+
 
 ?>

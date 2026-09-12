@@ -12,7 +12,7 @@ private \PDO $connection;
     }
 
 
-  public function realizar(int $id_emprestimo, int $isbn, int $id_usuario,int $data_emprestimo,int $data_devolucao): bool {
+  public function realizar(int $id_emprestimo, int $isbn, int $id_usuario,int $data_emprestimo,int $data_devolucao) {
     $sql = "INSERT INTO emprestimo (id_emprestimo, isbn, id_usuario, data_emprestimo, data_devolucao)
             VALUES (:id_emprestimo, :isbn, :id_usuario, :data_emprestimo, :data_devolucao)";
 
@@ -27,13 +27,6 @@ private \PDO $connection;
     ]);
 
   }
-
-    public function listar () : array{
-
-    $stmt = $this->connection->query("SELECT * FROM emprestimos");
- 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
 
 
 public function devolver(int $id_emprestimo, int $isbn, int $id_usuario,int $data_emprestimo,int $data_devolucao) :bool{
@@ -55,8 +48,6 @@ public function devolver(int $id_emprestimo, int $isbn, int $id_usuario,int $dat
             ':data_devolucao' => $data_devolucao
         ]);
     }
-
-
 
 public function renovar (int $id_usuario, int $data_emprestimo, int $data_devolucao): bool{
    $sql = "UPDATE emprestimos
@@ -83,6 +74,14 @@ public function listarAtrasados(): array
 
     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 }
+
+
+    public function totalEmprestimos () : array{
+
+    $stmt = $this->connection->query("SELECT * FROM emprestimos");
+ 
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 
 
 }

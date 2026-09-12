@@ -38,7 +38,7 @@
                     novas histórias para ler.
                 </p>
  
-                <form class="pesquisa" method="GET" action="View/buscar.livros.php">
+                <form class="pesquisa" method="GET" action="View/buscarLivros.php">
                     <input
                         type="text"
                         name="q"

@@ -30,7 +30,7 @@
     <span class="texto">Usuário não encontrado.</span>
 </div>
  
-        <form method="POST" action="login-processar.php">
+        <form method="POST" action="Usuario.php">
           <div class="campo">
             <label for="user">Email Acadêmico/CPF</label>
             <input type="text" id="user" name="email">

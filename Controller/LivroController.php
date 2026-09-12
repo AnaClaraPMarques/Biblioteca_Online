@@ -6,7 +6,7 @@ namespace Controller;
 
 use Model\Livro;
 
-//CORRIGIR FUNÇÕES DE CADASTRAR, EDITAR E EXCLUIR PARA RECEBER OS DADOS DO FORMULÁRIO E CHAMAR O MÉTODO CORRESPONDENTE DO MODELO
+
 class LivroController
 {
     private \PDO $connection; 
@@ -29,7 +29,7 @@ class LivroController
 
     }
 
-    public function editar() :void
+    public function editar()
     {
         $livro = new Livro($this->connection);
         $livro->editar($_POST['isbn'], $_POST['titulo'], $_POST['autor'], $_POST['genero'], $_POST['ano']);

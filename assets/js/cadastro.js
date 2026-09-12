@@ -122,8 +122,6 @@ function sucesso(input, mensagem) {
 }
 
 
-// CRIA TEXTO ABAIXO DO INPUT
-
 function criarMensagem(input) {
 
     const small = document.createElement("small");
@@ -134,7 +132,6 @@ function criarMensagem(input) {
 }
 
 
-// LIMPAR
 
 function limparTudo() {
 

@@ -7,17 +7,18 @@ use Model\Usuario;
 
 class UsuarioController 
 {
-    private $usuarioModel;
-
-    public function __construct()
+   private Usuario $usuarioModel;
+ 
+    public function __construct(\PDO $connection)
     {
-        $this->usuarioModel = new User();
+        $this->usuarioModel = new Usuario($connection);
     }
 
-    //TIRAR DUVIDA COM A PROFESSORA SOBRE ESSA FUNÇÃO, SE É NECESSÁRIO OU NÃO
+
     private function validateEmptyFields(string $nome, string $email, string $senha): bool
     {
         if (empty($nome) || empty($email) || empty($senha)) {
+
             return false;
         }
 
@@ -111,5 +112,34 @@ class UsuarioController
         } else {
             echo "Erro ao excluir usuário.";
         }
+    
+
+    $id = $_POST['id'] ?? null;
+
+    if (!$id) {
+        echo "Usuário não encontrado.";
+        return;
     }
+
+    $resultado = $this->usuarioModel->excluir($id);
+
+    if ($resultado) {
+        echo "Usuário excluído com sucesso!";
+    } else {
+        echo "Erro ao excluir usuário.";
+    }
+
 }
+
+      public function listaTodos(): void {
+
+ $usuarios = $this->usuarioModel->listarTodos();
+
+      }
+
+
+
+
+
+}
+
